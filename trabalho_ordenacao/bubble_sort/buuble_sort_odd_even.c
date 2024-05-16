@@ -57,6 +57,34 @@ void bubbleSort(int arr[], int n)
 		for (j = 0; j < n - i - 1; j++)
 			if (arr[j] > arr[j + 1])
 				swap(arr, j, j + 1);
+/*
+    for (i = 0; i < n; i++)
+    {
+        if (i % 2 == 0)
+        { // even phase
+            if (rank % 2 == 0)
+            { // even process
+                recv(B, rank + 1); send(A, rank + 1);
+                A = min(A,B);
+            } else
+            { // odd process
+                send(A, rank - 1); recv(B, rank - 1);
+                A = max(A,B);
+            }
+        }
+        else if (rank > 0 && rank < n-1)
+        { // odd phase
+            if (rank % 2 == 0)
+            { // even process
+                recv(B, rank - 1); send(A, rank - 1);
+                A = max(A,B);
+            } else
+            { // odd process
+                send(A, rank + 1); recv(B, rank + 1);
+                A = min(A,B);
+            }
+        }
+    }*/
 }
 
 void printArray(int arr[], int size)
