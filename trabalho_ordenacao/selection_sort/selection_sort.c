@@ -1,23 +1,19 @@
 #include <stdio.h>
 
-void swap(int* a, int* b){
-    int aux;
-
-    aux = *a;
-    *a = *b;
-    *b = aux;
-}
-
 void selectionSort(int array[], int size){
-    int i, j, min;
+    int i, j, min, aux;
 
     for(i = 0; i < size-1; i++){
         min = i;
+
         for(j = i+1; j < size; j++){
             if(array[j] < array[min])
                 min = j;
         }
-        swap(&array[i], &array[min]);
+        
+        aux = array[i];
+        array[i] = array[j];
+        array[j] = aux;
     }
 }
 
