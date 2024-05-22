@@ -1,4 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SIZE 100000
 
 void selectionSort(int array[], int size){
     int i, j, min, aux;
@@ -11,16 +15,28 @@ void selectionSort(int array[], int size){
                 min = j;
         }
         
-        aux = array[i];
-        array[i] = array[j];
-        array[j] = aux;
+        if (min != i) {
+            aux = array[i];
+            array[i] = array[min];
+            array[min] = aux;
+        }
     }
 }
 
 int main(){
-    int array[5] = {2, 9, 8, 56, 24};
-    selectionSort(array, 5);
-    for(int i = 0; i < 5; i++){
-        printf("%d ", array[i]);
+    int array[SIZE];
+    
+    srand(time(NULL));
+
+    for(int i = 0; i < SIZE; i++){
+        array[i] = rand()%SIZE;
     }
+
+    clock_t start = clock();
+    selectionSort(array, SIZE);
+    clock_t finish = clock();
+
+    double time_spent = (double)(finish - start)/CLOCKS_PER_SEC;
+	printf("Time spent: %f\n", time_spent);
+    return 0;
 }
